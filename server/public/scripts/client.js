@@ -10,8 +10,6 @@ function init() {
   $(".js-btn-mathOperator").on("click", function(event) {
     operator = event.target.innerHTML;
     console.log(operator);
-    //  let oper = event.target.innerHTML;
-    //  handleOperator(oper)
   });
 }
 
@@ -19,24 +17,36 @@ function init() {
 //EVENT HANDLERS
 // -------------
 
-// function handleOperator(oper){
-//     operator = oper;
-// }
-
 function submitInput() {
   console.log("clicked!");
 
-  // const newItem = {
-  //   num1: $(".js-input-firstNumber").val(),
-  //   num2: $(".js-input-secondNumber").val(),
-  //   operator: operator,
-  //   output: ""
-  // };
+  const newItem = {
+    num1: $(".js-input-firstNumber").val(),
+    num2: $(".js-input-secondNumber").val(),
+    operator: operator,
+    output: ""
+  };
+
+  postInput(newItem);
 }
 
 //
 // API INTERACTIONS / AJAX CALLS
 // -----------------------------
+function postInput(inputData) {
+  $.ajax({
+    method: "POST",
+    url: "/numberhistory",
+    data: inputData
+  })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.log("err");
+      alert("There was an error!!");
+    });
+}
 
 // function getCalculations() {
 //   $.ajax({
