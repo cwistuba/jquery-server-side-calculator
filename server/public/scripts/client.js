@@ -1,9 +1,11 @@
 let operator;
+let history;
 
 $(document).ready(init);
 
 function init() {
   console.log("DOM is ready");
+  getNumberHistory();
 
   //   getCalculations();
   $(".js-btn-equals").on("click", submitInput);
@@ -41,6 +43,7 @@ function postInput(inputData) {
   })
     .then(response => {
       console.log(response);
+      getNumberHistory();
     })
     .catch(err => {
       console.log("err");
@@ -48,19 +51,20 @@ function postInput(inputData) {
     });
 }
 
-// function getCalculations() {
-//   $.ajax({
-//     method: "GET",
-//     url: "/numberhistory"
-//   })
-//     .then(response => {
-//       render(response);
-//     })
-//     .catch(err => {
-//       console.log("err");
-//       alert("There was an error finding.");
-//     });
-// }
+function getNumberHistory() {
+  $.ajax({
+    method: "GET",
+    url: "/numberhistory"
+  })
+    .then(response => {
+      history = response;
+      console.log(history);
+    })
+    .catch(err => {
+      console.log("err");
+      alert("There was an error finding.");
+    });
+}
 
 //
 // RENDER
