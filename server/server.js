@@ -1,24 +1,23 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const numberHistory = require("./modules/numberhistory");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-const calculation = [];
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static("server/public"));
 
-app.get("/calculation", (req, res) => {
-  res.send(calculation);
+app.get("/numberhistory", (req, res) => {
+  res.send(numberHistory);
 });
 
-app.post("/calculations", (req, res) => {
-  const calculationItem = req.body;
+app.post("/numberhistory", (req, res) => {
+  const newItem = req.body;
 
-  calculation.push(calculationItem);
+  numberHistory.push(newItem);
   res.sendStatus(201);
 });
 
