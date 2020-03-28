@@ -13,6 +13,13 @@ app.get("/calculation", (req, res) => {
   res.send(calculation);
 });
 
+app.post("/calculations", (req, res) => {
+  const calculationItem = req.body;
+
+  calculation.push(calculationItem);
+  res.sendStatus(201);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);
 });
