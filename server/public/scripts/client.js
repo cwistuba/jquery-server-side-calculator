@@ -7,7 +7,7 @@ function init() {
   console.log("DOM is ready");
   getNumberHistory();
 
-  //   getCalculations();
+  $(".js-btn-clear").on("click", clearInputs);
   $(".js-btn-equals").on("click", submitInput);
   $(".js-btn-mathOperator").on("click", function(event) {
     operator = event.target.innerHTML;
@@ -18,6 +18,13 @@ function init() {
 //
 //EVENT HANDLERS
 // -------------
+
+function clearInputs() {
+  console.log("clicked");
+
+  $(".js-input-firstNumber").val("");
+  $(".js-input-secondNumber").val("");
+}
 
 function submitInput() {
   console.log("clicked!");
@@ -80,8 +87,9 @@ function render() {
     `);
   }
   const lastIndex = history[history.length - 1];
-  console.log(lastIndex);
-  $(".js-result").text(`
+  if (lastIndex != undefined) {
+    $(".js-result").text(`
     ${lastIndex.output}
   `);
+  }
 }
