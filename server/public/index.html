@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="vendors/jquery.min.js"></script>
+    <script src="client.js"></script>
+    <title>Server Side Calculator</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Server Side Calculator</h1>
+    </header>
+
+    <div>
+      <input
+        class="js-input-firstNumber"
+        type="number"
+        placeholder="number"
+        name="firstNumber"
+        require
+      />
+
+      <button class="js-btn-mathOperator">+</button>
+      <button class="js-btn-mathOperator">-</button>
+      <button class="js-btn-mathOperator">*</button>
+      <button class="js-btn-mathOperator">/</button>
+
+      <input
+        class="js-input-secondNumber"
+        type="number"
+        placeholder="number"
+        name="secondNumber"
+        require
+      />
+
+      <button class="js-btn-equals">=</button>
+      <button class="js-btn-clear">C</button>
+    </div>
+
+    <div class="js-btn-result">
+      <h2>0</h2>
+    </div>
+
+    <div class="js-btn-equationList">
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+  </body>
+</html>

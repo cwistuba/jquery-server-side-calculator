@@ -9,6 +9,8 @@ const calculation = [];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(express.static("server/public"));
+
 app.get("/calculation", (req, res) => {
   res.send(calculation);
 });
