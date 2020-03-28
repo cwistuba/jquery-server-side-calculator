@@ -59,10 +59,10 @@ function getNumberHistory() {
     .then(response => {
       history = response;
       console.log(history);
+      render();
     })
     .catch(err => {
       console.log("err");
-      alert("There was an error finding.");
     });
 }
 
@@ -70,11 +70,13 @@ function getNumberHistory() {
 // RENDER
 // -------
 
-function render(equationList) {
+function render() {
   console.log("RENDER INVENTORY");
   $(".js-equationList").empty();
-
-  for (let i = 0; i < equationList.length; i++) {
-    const calculationItem = equationList[i];
+  for (let i = 0; i < history.length; i++) {
+    let result = history[i];
+    $(".js-equationList").append(`
+    <li>${result.num1}${result.operator}${result.num2}=${result.output}</li>
+    `);
   }
 }
