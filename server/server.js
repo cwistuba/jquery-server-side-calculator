@@ -17,6 +17,20 @@ app.get("/numberhistory", (req, res) => {
 app.post("/numberhistory", (req, res) => {
   const newItem = req.body;
 
+  const num1 = parseFloat(newItem.num1);
+  const num2 = parseFloat(newItem.num2);
+  const operator = newItem.operator;
+
+  if (operator == "+") {
+    newItem.output = num1 + num2;
+  } else if (operator == "-") {
+    newItem.output = num1 - num2;
+  } else if (operator == "*") {
+    newItem.output = num1 * num2;
+  } else if (operator == "/") {
+    newItem.output = num1 / num2;
+  }
+
   numberHistory.push(newItem);
   res.sendStatus(201);
 });
