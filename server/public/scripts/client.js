@@ -79,4 +79,9 @@ function render() {
     <li>${result.num1}${result.operator}${result.num2}=${result.output}</li>
     `);
   }
+  const lastIndex = history[history.length - 1];
+  console.log(lastIndex);
+  $(".js-result").text(`
+    ${lastIndex.output}
+  `);
 }
